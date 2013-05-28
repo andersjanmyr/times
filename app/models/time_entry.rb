@@ -6,8 +6,8 @@ class TimeEntry < ActiveRecord::Base
     TimeEntry.joins(:project).select(<<-EOSQL
     projects.name as project_name,
     date(clocked_in) as date,
-    sum(clocked_out - clocked_in) as total
+    date_trunc('minutes', sum(clocked_out - clocked_in)) as total
     EOSQL
-    ).group('project_name, date').order('date')
+    ).group('project_name, date').order('date desc, project_name')
   end
 end
