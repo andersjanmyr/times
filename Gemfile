@@ -34,6 +34,7 @@ end
 
 gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'rails4'
 gem 'cancan'
+gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git', branch: 'rails-4'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
