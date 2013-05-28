@@ -17,9 +17,8 @@ class TimeEntryTest < ActiveSupport::TestCase
 
     it 'contains the name, date and total' do
       entry = @entries.first
-      p @entries.map { |e| e.date}
-      p @entries.map { |e| e.total}
       assert_equal('Anders', entry.project_name)
+      assert_equal('ANDERS', entry.external_name)
       assert_equal(Date.today.to_s, entry.date.to_s)
       assert_equal('03:30:00', entry.total)
     end
@@ -30,7 +29,10 @@ class TimeEntryTest < ActiveSupport::TestCase
 
   def create_entry(project_name, clocked_in, clocked_out)
     TimeEntry.create!({
-      project: Project.find_or_create_by(name: project_name),
+      project: Project.find_or_create_by({
+        name: project_name,
+        external_name: project_name.upcase
+      }),
       clocked_in: clocked_in,
       clocked_out: clocked_out
     });
