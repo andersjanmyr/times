@@ -24,9 +24,10 @@ class TimeEntriesController < ApplicationController
   def create_entry entry
     TimeEntry.find_or_create_by({
       user_id: current_user.id,
-      project_id: Project.find_or_create_by(name: entry[:job]).id,
-      clocked_in: entry[:clocked_in],
-      clocked_out: entry[:clocked_out]
+      project_id: Project.find_or_create_by(name: entry.job).id,
+      clocked_in: entry.clocked_in,
+      clocked_out: entry.clocked_out,
+      comment: entry.comment
     })
   end
 end
