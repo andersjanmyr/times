@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130528073920) do
+ActiveRecord::Schema.define(version: 20130528084605) do
+
+  create_table "projects", force: true do |t|
+    t.string   "name"
+    t.integer  "rate"
+    t.string   "external_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"
