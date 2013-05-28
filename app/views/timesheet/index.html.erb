@@ -1,2 +1,11 @@
 <h1>Timesheet#index</h1>
-<p>Find me in app/views/timesheet/index.html.erb</p>
+<table>
+  <% @entries.each do |e| %>
+    <tr>
+    <td class='date'><%= e.date %></td>
+    <td class='project-name'><%= e.project_name %></td>
+    <td class='external-name'><%= e.external_name %></td>
+    <td class='total'><%= e.total %></td>
+    </tr>
+  <% end %>
+</table>

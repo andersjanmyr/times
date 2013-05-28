@@ -1,8 +1,9 @@
 require 'times/time_entry_parser'
 
 class TimeEntriesController < ApplicationController
-  def new
+  before_action :authenticate_user!
 
+  def new
   end
 
   def create
