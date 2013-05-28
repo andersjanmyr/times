@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 
-require_relative '../../../lib/times/time_entry_parser'
+require 'times/time_entry_parser'
 
 module Times
 
