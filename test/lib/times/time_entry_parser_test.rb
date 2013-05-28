@@ -1,12 +1,12 @@
 require 'minitest/autorun'
 
-require_relative '../../../lib/times/time_entry_loader'
+require_relative '../../../lib/times/time_entry_parser'
 
 module Times
 
-  class TestTimeEntryLoader <  MiniTest::Unit::TestCase
+  describe TimeEntryParser do
 
-    def setup
+    before do
       @data = <<-EOD
 "Job","Clocked In","Clocked Out","Duration","Hourly Rate","Earnings","Comment","Tags"
 "Studentlitteratur","2013-05-22 08:24","2013-05-22 11:54","3,5","850,00","2 975,00","",""
@@ -26,10 +26,19 @@ module Times
       EOD
     end
 
-    def test_parse
-      something = TimeEntryLoader.parse(@data)
-      p something
-      refute_empty(something)
+    describe '#parse' do
+      before do
+        @entries = TimeEntryParser.parse(@data)
+      end
+      it 'returns one entry per line' do
+        assert_equal(14, @entries.length)
+      end
+      it 'return entry with correct values' do
+        entry = @entries[0]
+        assert_equal('Studentlitteratur', entry.job)
+        assert_equal(DateTime.parse('2013-05-22 08:24'), entry.clocked_in)
+        assert_equal(DateTime.parse('2013-05-22 11:54'), entry.clocked_out)
+      end
     end
   end
 

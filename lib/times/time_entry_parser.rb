@@ -1,21 +1,17 @@
 require 'csv'
 
 module Times
-  class TimeEntryLoader
+  Entry = Struct.new(:job, :clocked_in, :clocked_out)
 
-
-    def self.load text
-
-    end
+  class TimeEntryParser
 
     # Parses CSV files as exported by HoursTracker app.
     # "Job","Clocked In","Clocked Out","Duration","Hourly Rate","Earnings","Comment","Tags"
     # "Studentlitteratur","2013-05-22 08:24","2013-05-22 11:54","3,5","850,00","2 975,00","",""
     def self.parse(data)
       table = CSV.parse(data, parse_options)
-      puts table.headers
       table.each.map do |row|
-        convert_fields(row.fields(:job, :clocked_in, :clocked_out))
+        to_entry(row.fields(:job, :clocked_in, :clocked_out))
       end
     end
 
@@ -26,8 +22,8 @@ module Times
       }
     end
 
-    def self.convert_fields values
-      [values[0], DateTime.parse(values[1]), DateTime.parse(values[2])]
+    def self.to_entry values
+      Entry.new(values[0], DateTime.parse(values[1]), DateTime.parse(values[2]))
     end
   end
 end
