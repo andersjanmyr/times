@@ -98,6 +98,9 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     minitest (4.7.4)
+    minitest-spec-rails (4.7.3)
+      minitest (~> 4.7)
+      rails (>= 3.0)
     multi_json (1.7.4)
     nested_form (0.3.2)
     nokogiri (1.5.9)
@@ -173,6 +176,7 @@ DEPENDENCIES
   devise!
   jbuilder (~> 1.0.1)
   jquery-rails
+  minitest-spec-rails
   quiet_assets
   rails (= 4.0.0.rc1)
   rails_admin!
