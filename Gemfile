@@ -33,6 +33,7 @@ group :doc do
 end
 
 gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'rails4'
+gem 'cancan'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
