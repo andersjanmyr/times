@@ -6,14 +6,21 @@ class TimeEntryTest < ActiveSupport::TestCase
     before do
       create_entry('Anders', 2.hours.ago, 1.hour.ago)
       create_entry('Anders', 4.hours.ago, 2.hour.ago)
+      create_entry('Anders', 28.hours.ago, 27.hours.ago)
       create_entry('Tapir', 2.hours.ago, 1.hour.ago)
-      @entries = TimeEntryTest.grouped_by_project_and_day
+      @entries = TimeEntry.grouped_by_project_and_day
     end
 
-    it 'contains two items' do
-      assert_equal(2, @entries.length)
+    it 'contains three items' do
+      assert_equal(3, @entries.length)
     end
 
+    it 'contains the name, date and total' do
+      entry = @entries.first
+      assert_equal('Anders', entry.project_name)
+      assert_equal(Date.today.to_s, entry.date)
+      assert_equal(3, entry.total)
+    end
 
   end
 
