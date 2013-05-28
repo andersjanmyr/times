@@ -1,8 +1,6 @@
 require 'csv'
 
 module Times
-  Entry = Struct.new(:job, :clocked_in, :clocked_out)
-
   class TimeEntryParser
 
     # Parses CSV files as exported by HoursTracker app.
@@ -23,7 +21,11 @@ module Times
     end
 
     def self.to_entry values
-      Entry.new(values[0], DateTime.parse(values[1]), DateTime.parse(values[2]))
+      {
+        job: values[0],
+        clocked_in: DateTime.parse(values[1]),
+        clocked_out: DateTime.parse(values[2])
+      }
     end
   end
 end

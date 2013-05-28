@@ -35,9 +35,9 @@ module Times
       end
       it 'return entry with correct values' do
         entry = @entries[0]
-        assert_equal('Studentlitteratur', entry.job)
-        assert_equal(DateTime.parse('2013-05-22 08:24'), entry.clocked_in)
-        assert_equal(DateTime.parse('2013-05-22 11:54'), entry.clocked_out)
+        assert_equal('Studentlitteratur', entry[:job])
+        assert_equal(DateTime.parse('2013-05-22 08:24'), entry[:clocked_in])
+        assert_equal(DateTime.parse('2013-05-22 11:54'), entry[:clocked_out])
       end
     end
   end
