@@ -5,9 +5,7 @@ Times::Application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 
-  resources :users, path: '', only: [] do
-    get 'timesheet/index'
-    resources :time_entries, only: [:index, :create]
-  end
+  get 'timesheet/index'
+  resources :time_entries, only: [:new, :create]
 
 end
