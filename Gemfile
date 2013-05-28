@@ -36,5 +36,9 @@ gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'rails
 gem 'cancan'
 gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git', branch: 'rails-4'
 
+group :development do
+  gem 'quiet_assets'
+end
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
