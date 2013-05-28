@@ -32,7 +32,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'rails4'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
