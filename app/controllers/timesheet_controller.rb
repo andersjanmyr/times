@@ -1,0 +1,2 @@
+class TimesheetController < ApplicationController
+end
