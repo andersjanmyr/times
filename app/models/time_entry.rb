@@ -3,12 +3,17 @@ class TimeEntry < ActiveRecord::Base
   belongs_to :project
 
   def self.grouped_by_project_and_day
-    TimeEntry.joins(:project).select(<<-EOSQL
-    projects.name as project_name,
-    projects.external_name as external_name,
-    date(clocked_in) as date,
-    date_trunc('minutes', sum(clocked_out - clocked_in)) as total
+    TimeEntry.select(<<-EOSQL
+      project_id,
+      date(clocked_in) as date,
+      date_trunc('minutes', sum(clocked_out - clocked_in)) as total
     EOSQL
-    ).group('project_name, external_name, date').order('project_name asc, date desc')
+    ).group('project_id, date').order('date desc, project_id asc')
+  end
+
+  def self.grouped_by_project
+    groups = grouped_by_project_and_day.to_a.group_by do |e|
+      e.project_id
+    end
   end
 end
