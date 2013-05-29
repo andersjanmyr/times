@@ -11,12 +11,23 @@
 <div id="container">
 
   <div id="header">
+    <div id='logo'>
+      <div class='good'>Good</div>
+      <div class='times'>Times</div>
+    </div>
+    <div class='title'>
+      <h1><%= yield :title %></h1>
+    </div>
   </div>
 
   <div id="main">
     <div class='messages'>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice %>
+        <div class="notice"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div class="alert"><%= alert %></div>
+      <% end %>
     </div>
 
     <div id="content">

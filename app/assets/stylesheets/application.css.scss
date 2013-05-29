@@ -1,9 +1,57 @@
+@import 'bourbon';
 @import 'welcome';
+
+body {
+  margin: 0;
+}
 
 #header {
   height: 10em;
-  background-color: orange;
+  @include linear-gradient(to top, red, orange);
 }
+
+#main {
+  min-height: 20em;
+  background: #F7F5EF;
+}
+
+#footer {
+  height: 2em;
+  @include linear-gradient(to top, red, orange);
+}
+
+#logo {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 40px 0 0 20px;
+  .good {
+    font-size: 48pt;
+    color: #eee;
+    font-weight: bold;
+  }
+  .times {
+    font-size: 42pt;
+    margin-left: 40px;
+    margin-top: -34px;
+    color: black;
+  }
+}
+.messages {
+  color: white;
+  font-weight: bold;
+}
+
+.notice {
+  background-color: green;
+}
+.alert {
+  background-color: red;
+}
+
+
+h1 {
+  margin: 0;
+}
+
 
 label {
   display: block;
