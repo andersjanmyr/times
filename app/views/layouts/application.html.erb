@@ -6,14 +6,28 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class='<%= params[:controller].dasherize %>'>
 
-<div class='messages'>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<div id="container">
+
+  <div id="header">
+  </div>
+
+  <div id="main">
+    <div class='messages'>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+
+    <div id="content">
+      <%= yield %>
+    </div>
+
+  </div>
+
+  <div id="footer">
+  </div>
 </div>
-
-<%= yield %>
 
 </body>
 </html>
