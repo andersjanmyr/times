@@ -3,6 +3,7 @@
 
 body {
   margin: 0;
+  background: #F7F5EF;
 }
 
 #header {
@@ -12,7 +13,7 @@ body {
 
 #main {
   min-height: 20em;
-  background: #F7F5EF;
+  margin: 20px 40px;
 }
 
 #footer {
@@ -69,6 +70,13 @@ label {
 textarea {
   width: 80em;
   height: 40em;
+}
+
+table {
+  width: 90%;
+}
+th {
+  font-weight: bold;
 }
 
 
