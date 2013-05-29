@@ -3,12 +3,12 @@
 <% end %>
 
 <table>
-  <% @entries.each do |e| %>
+  <% @project_entries.each do |project, entries| %>
     <tr>
-    <td class='date'><%= e.date %></td>
-    <td class='project-name'><%= e.project_name %></td>
-    <td class='external-name'><%= e.external_name %></td>
-    <td class='total'><%= e.total %></td>
+      <th class='project'><%= project.name %></th>
+      <% entries.each do |e| %>
+        <td class='entry-name'><%= e.date %><br/><%= e.total %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
